@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(103, 173, 173);
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    width: 768px;
+    margin: 100px auto;
+    font-family: sans-serif;
+    position: relative;
+
+}
+
+.dropDown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.tituloDropDown {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, .16);
+    z-index: 200;
+    border: 2px solid transparent;
+    transition: .2s ease all;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 20px;
+}
+
+/* Icone seta */
+.tituloDropDown i {
+    font-size: 30px;
+    color: rgb(9, 48, 177);
+}
+
+/* Criando o triangulo */
+.tituloDropDown.ativo::before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 15px solid rgb(9, 48, 177);
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid transparent;
+    position: absolute;
+    bottom: -30px;
+    right: 30px;
+}
+
+.tituloDropDown .containerTitulo {
+    display: flex;
+    align-items: center;
+    color: black;
+
+}
+
+.tituloDropDown i {
+    margin-right: 10px;
+    color: black;
+
+}
+
+.conteudoDropDown {
+    background-color: white;
+    border-radius: 5px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+    animation: fadeIn .3s forwards;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .16);
+    display: none;
+}
+
+.conteudoDropDown.ativo {
+    display: block;
+}
+
+.tituloDropDown.ativo,
+.tituloDropDown:hover,
+.conteudoDropDown.ativo {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .16);
+    border: solid 2px rgb(9, 48, 177);
+
+}
+
+/* Elementos bloqueados para clicar */
+.containerTitulo,
+.tituloSelect {
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Barra de rolagem */
+::-webkit-scrollbar {
+    background: rgb(192, 194, 197);
+    border-radius: 0 5px 5px 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(9, 48, 177);
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
+    border: solid 2px white;
+}
+
+/* Animação do conteudoDropDown */
+@keyframes fadeIn {
+    from {
+        transform: translateY(-80px) scale(.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(10px) scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width:768px) {
+    .container {
+        width: 425px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width:600px) {
+    .container {
+        width: 90%;
+    }
+}
